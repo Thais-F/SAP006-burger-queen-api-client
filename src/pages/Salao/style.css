@@ -1,0 +1,35 @@
+.container-food{
+display: flex;
+flex-direction: column;
+}
+
+.menu-um{
+    margin-top: 15%;
+}
+
+.breakfast-menu{
+ margin-top: 15%;
+}
+
+.divFlavor,
+  .divClassName,
+  .divKey,
+  .divName,
+  .divPrice,
+  .itemName,
+  .itemPrice,
+  .itemNameKey,
+  .itemPriceKey{
+    font-size: 12px;
+}
+
+.img-food{
+    width: 10%;
+}
+
+
+.addBtn{
+    border: none;
+    align-self: baseline;
+    margin-bottom: 2%;
+}
