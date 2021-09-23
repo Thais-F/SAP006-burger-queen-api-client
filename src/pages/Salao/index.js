@@ -2,75 +2,110 @@ import Input from "../../components/inputs/index.js";
 import { useState, useEffect } from "react";
 import InputSelect from "../../components/inputs/InputSelect.js";
 import { Products } from "../../components/Product/index.js";
+import Button from "../../components/Button/button.js";
 import "./style.css";
-const Menu = () => {
-  const [menu, setMenu] = useState([]);
-  // const [breakfast, setBreakfast] = useState([]);
 
-  // const [cardapio, setCardapio] = useState();
-  let cardapio = [];
-  // const [addItem, setAddItem] = useState([])
+const Menu = () => {
+  const [menu, setMenu] = useState(true);
+  const [breakfast, setBreakfast] = useState([]);
+  const [allDay, setAllDay] = useState([]);
 
   const token = localStorage.getItem("usersToken");
-  console.log(token);
 
   useEffect(() => {
-
     fetch("https://lab-api-bq.herokuapp.com/products", {
       headers: {
         accept: "application/json",
         Authorization: `${token}`,
       },
-    }).then((response) => {
-      response.json()
-      .then((json) => {
-        // const cardapio = json;
-        setMenu(json);
-        //filtrar o café da manha aqui para quando abrir o salao renderizar os produtos. depois pegar o cardapio e filrar para o all-day e renderizar quando clicar no botao
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const breakfast = data.filter((item) => item.type === "breakfast");
+        setBreakfast(breakfast);
+        const allDay = data.filter((item) => item.type === "all-day");
+        console.log(allDay);
+        setAllDay(allDay);
       });
-    });
   }, [token]);
 
   return (
     <main>
-      <form className="produtos">
-        <h1>Menu e atendimento</h1>
+      <form className="container-salao">
+        <div className="cliente-mesa">
+          <h1>Menu e Atendimento</h1>
 
-        <Input className="client" placeholder="Cliente"></Input>
-        <InputSelect />
+          <Input className="client" placeholder="Cliente"></Input>
+          <InputSelect />
+        </div>
+        <div className="btn-menu">
 
-        <div className="menu-um">
-          <div className="breakfast-menu">
-            {menu &&
-              menu.map((item) => (
-                <Products
-                  divClassName="container-food"
-                  divKey={Math.random()}
-                  itemName={item.name}
-                  divId={item.id}
-                  ImgSrc={item.image}
-                  itemPrice={item.price}
-                  qnt={item.qnt}
-                  itemFlavor={item.flavor}
-                  itemNameKey={item.id}
-                  divOnClick={() => {
-                    setMenu([...menu, {itemName: item.name, itemPrice: item.price}])
-                  }}
-                />
-              ))}
-          </div>
+          <Button
+            className="categoriesBtn"
+            id="breakfast"
+            btnText="Café da Manhã"
+            onClick={(e) => {
+              e.preventDefault();            
+              setMenu(false)}
+            }
+          />
+          <Button
+            className="categoriesBtn"
+            id="all-day"
+            btnText="All Day"
+            onClick={(e) => {
+              e.preventDefault();            
+              setMenu(true)}
+            }
+          />
         </div>
 
-{/* <div className="pedidos">
-{menu.map((item) => {
-            <Article 
-            key={item.id}  
-            nome={item.nome}
-            preco={item.preco}
-          />
-      })}
-       </div> */}
-
+        <div className="cards-menu">
+          
+          {menu ? (
+            <div className="breakfast-menu">
+              {breakfast &&
+                breakfast.map((item) => (
+                  <Products
+                    divClassName="container-food"
+                    itemName={item.name}
+                    divId={item.id}
+                    ImgSrc={item.image}
+                    itemPrice={item.price}
+                    itemFlavor={item.flavor}
+                    itemNameKey={item.id}
+                    divOnClick={() => {
+                      setBreakfast([
+                        ...breakfast,
+                        { itemName: item.name, itemPrice: item.price },
+                      ]);
+                    }}
+                  />
+                ))}
+            </div>
+          ) : (
+            <div className="all-day-menu">
+              {allDay &&
+                allDay.map((item) => (
+                  <Products
+                    divClassName="container-food"
+                    itemName={item.name}
+                    divId={item.id}
+                    ImgSrc={item.image}
+                    itemPrice={item.price}
+                    itemFlavor={item.flavor}
+                    itemNameKey={item.id}
+                    divOnClick={() => {
+                      setAllDay([
+                        ...allDay,
+                        { itemName: item.name, itemPrice: item.price },
+                      ]);
+                    }}
+                  />
+                ))}
+            </div>
+          )}
+        </div>
       </form>
     </main>
   );

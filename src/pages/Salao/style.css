@@ -33,3 +33,14 @@ flex-direction: column;
     align-self: baseline;
     margin-bottom: 2%;
 }
+
+.menu-um{
+    background-color: white;
+    width: 45%;
+    margin-top: 15%;
+}
+
+.cliente-mesa{
+    
+    margin-top: 25%; 
+}
