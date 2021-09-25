@@ -30,82 +30,82 @@ const Menu = () => {
   }, [token]);
 
   return (
-    <main>
+    <main className="menu">
+      <h1>Menu e Atendimento</h1>
+      <nav className="btn-menu">
+        <Button
+          className="categoriesBtn"
+          id="breakfast"
+          btnText="Café da Manhã"
+          btnOnClick={(e) => {
+            e.preventDefault();
+            setMenu(true);
+          }}
+        />
+        <Button
+          className="categoriesBtn"
+          id="all-day"
+          btnText="All Day"
+          btnOnClick={(e) => {
+            e.preventDefault();
+            setMenu(false);
+          }}
+        />
+      </nav>
+     
       <form className="container-salao">
-        <div className="cliente-mesa">
-          <h1>Menu e Atendimento</h1>
+      <div className="cliente-mesa">
+        
 
-          <Input className="client" placeholder="Cliente"></Input>
-          <InputSelect />
-        </div>
-        <div className="btn-menu">
+        <Input className="client" placeholder="Cliente"></Input>
+        <InputSelect />
+      </div>
 
-          <Button
-            className="categoriesBtn"
-            id="breakfast"
-            btnText="Café da Manhã"
-            onClick={(e) => {
-              e.preventDefault();            
-              setMenu(false)}
-            }
-          />
-          <Button
-            className="categoriesBtn"
-            id="all-day"
-            btnText="All Day"
-            onClick={(e) => {
-              e.preventDefault();            
-              setMenu(true)}
-            }
-          />
-        </div>
-
-        <div className="cards-menu">
-          
-          {menu ? (
-            <div className="breakfast-menu">
-              {breakfast &&
-                breakfast.map((item) => (
-                  <Products
-                    divClassName="container-food"
-                    itemName={item.name}
-                    divId={item.id}
-                    ImgSrc={item.image}
-                    itemPrice={item.price}
-                    itemFlavor={item.flavor}
-                    itemNameKey={item.id}
-                    divOnClick={() => {
-                      setBreakfast([
-                        ...breakfast,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
-                  />
-                ))}
-            </div>
-          ) : (
-            <div className="all-day-menu">
-              {allDay &&
-                allDay.map((item) => (
-                  <Products
-                    divClassName="container-food"
-                    itemName={item.name}
-                    divId={item.id}
-                    ImgSrc={item.image}
-                    itemPrice={item.price}
-                    itemFlavor={item.flavor}
-                    itemNameKey={item.id}
-                    divOnClick={() => {
-                      setAllDay([
-                        ...allDay,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
-                  />
-                ))}
-            </div>
-          )}
-        </div>
+      <div className="cards-menu">
+        {menu ? (
+          <div className="breakfast-menu">
+            {breakfast &&
+              breakfast.map((item) => (
+                <Products
+                  divClassName="container-food"
+                  itemName={item.name}
+                  divId={item.id}
+                  ImgSrc={item.image}
+                  itemPrice={item.price}
+                  itemFlavor={item.flavor}
+                  itemNameKey={item.id}
+                  divOnClick={() => {
+                    setBreakfast([
+                      ...breakfast,
+                      { itemName: item.name, itemPrice: item.price },
+                    ]);
+                  }}
+                />
+              ))}
+          </div>
+        ) : (
+          <div className="all-day-menu">
+            {allDay &&
+              allDay.map((item) => (
+                <Products
+                  divClassName="container-food"
+                  itemName={item.name}
+                  divId={item.id}
+                  ImgSrc={item.image}
+                  itemPrice={item.price}
+                  itemFlavor={item.flavor}
+                  itemNameKey={item.id}
+                  divOnClick={() => {
+                    setAllDay([
+                      ...allDay,
+                      { itemName: item.name, itemPrice: item.price },
+                    ]);
+                  }}
+                />
+              ))}
+          </div>
+        )}
+      </div>
       </form>
     </main>
   );

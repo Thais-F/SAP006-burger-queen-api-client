@@ -42,5 +42,19 @@ flex-direction: column;
 
 .cliente-mesa{
     
-    margin-top: 25%; 
+    margin-top: 5%; 
+}
+
+.menu{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-menu{
+display: flex;
+}
+
+.client{
+    font-size: 30px;
 }
