@@ -34,33 +34,33 @@ const SignUp = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      const ErrorsValidation = validate(values);
-      console.log(ErrorsValidation);
+      const validation = validate(values);
+      console.log(validation);
 
-      setErrors(ErrorsValidation)
+      setErrors(validation)
 
-      if(errors.empty === true) {
+      if (validation.valid) {
 
-        console.log(errors.empty)
+        console.log(errors.valid)
         console.log(values)
         console.log('Entrou?')
         signUpWithEmailAndPassword(values)
-        .then((response) => {
-          if (response.message) {
-            console.log(response.message);
-            alert(response.message);
-            // errors.message = response.message;
-            // return errors;
-          } else if (response.token) {
-            console.log(response)
-            alert("Usuário cadastrado com sucesso!")
-            navigateToLogin()
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-       }
+          .then((response) => {
+            if (response.message) {
+              console.log(response.message);
+              setErrors({
+                message: response.message,
+              })
+            } else if (response.token) {
+              console.log(response)
+              alert("Usuário cadastrado com sucesso!")
+              navigateToLogin()
+            }
+          })
+          .catch((error) => {
+            throw new Error(error)
+          })
+      }
     };
 
     const handleChange = (e) => {
@@ -105,7 +105,6 @@ const SignUp = () => {
               onChange={handleChange}
             />
             <p className="errorMessage"> {errors.email && errors.email} {errors.message && errors.message}</p>
-            {/* <p className="errorMessage"> {errors.message && errors.message}</p> */}
           </fieldset>
 
           <fieldset className="margin-input">
