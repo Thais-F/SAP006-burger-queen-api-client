@@ -8,7 +8,6 @@ import { signUpWithEmailAndPassword } from "../../services/data.js";
 
 import { useHistory } from "react-router";
 
-
 const SignUp = () => {
   const ValueAndError = (validate) => {
     const history = useHistory();
@@ -38,30 +37,29 @@ const SignUp = () => {
       const ErrorsValidation = validate(values);
       console.log(ErrorsValidation);
 
-      setErrors(ErrorsValidation)
+      setErrors(ErrorsValidation);
 
-      if(errors.empty === true) {
-
-        console.log(errors.empty)
-        console.log(values)
-        console.log('Entrou?')
+      if (errors.empty === true) {
+        console.log(errors.empty);
+        console.log(values);
+        console.log("Entrou?");
         signUpWithEmailAndPassword(values)
-        .then((response) => {
-          if (response.message) {
-            console.log(response.message);
-            alert(response.message);
-            // errors.message = response.message;
-            // return errors;
-          } else if (response.token) {
-            console.log(response)
-            alert("Usuário cadastrado com sucesso!")
-            navigateToLogin()
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-       }
+          .then((response) => {
+            if (response.message) {
+              console.log(response.message);
+              alert(response.message);
+              // errors.message = response.message;
+              // return errors;
+            } else if (response.token) {
+              console.log(response);
+              alert("Usuário cadastrado com sucesso!");
+              navigateToLogin();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     };
 
     const handleChange = (e) => {
@@ -86,6 +84,7 @@ const SignUp = () => {
         <section className="form-input">
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="name"
               type="text"
               placeholder="Nome"
@@ -98,6 +97,7 @@ const SignUp = () => {
 
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="email"
               id="email"
               type="text"
@@ -105,12 +105,16 @@ const SignUp = () => {
               value={values.email}
               onChange={handleChange}
             />
-            <p className="errorMessage"> {errors.email && errors.email} {errors.message && errors.message}</p>
+            <p className="errorMessage">
+              {" "}
+              {errors.email && errors.email} {errors.message && errors.message}
+            </p>
             {/* <p className="errorMessage"> {errors.message && errors.message}</p> */}
           </fieldset>
 
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="password"
               id="password"
               type="password"
@@ -145,11 +149,7 @@ const SignUp = () => {
           Cozinheiro(a)
         </label>
         <p className="errorMessage"> {errors.role && errors.role}</p>
-        <Button
-          btnClass="createAccount"
-          btnText="Cadastrar"
-          btnType="submit"
-        />
+        <Button btnClass="createAccount" btnText="Cadastrar" btnType="submit" />
       </form>
     </main>
   );
