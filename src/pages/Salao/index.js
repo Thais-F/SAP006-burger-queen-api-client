@@ -1,9 +1,12 @@
 import Input from "../../components/inputs/index.js";
+// import Cartmenu from "../../components/cartmenu/cartmenu.js";
+import Button from '../../components/Button/button.js'
+import '../../components/Button/style.css'
 import { useState, useEffect } from "react";
 import InputSelect from "../../components/inputs/InputSelect.js";
 import { Products } from "../../components/Product/index.js";
-import Button from "../../components/Button/button.js";
 import "./style.css";
+import CartItems from "../../components/cartItems/cartitems.js"
 
 const Menu = () => {
   const [menu, setMenu] = useState(true);
@@ -12,6 +15,36 @@ const Menu = () => {
   const [burgers, setBurgers] = useState([]);
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
+
+  // const [ estadoAtual, atualizarEstado] = useState(0)
+  let totalCost = 0
+
+
+  const [order, setOrder] = useState([])
+
+  //   function addOne(e) {
+  //     e.preventDefault()
+  //     setItemQuantity(itemQuantity + 1)
+  // }
+
+  // function deleteItem(e) {
+  //     e.preventDefault()
+  //     e.target.parentNode.remove()
+  // }
+
+  function addOrder(e, item) {
+    e.preventDefault()
+    console.log(item)
+    setOrder([
+      ...order,
+      { itemName: item.name, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
+    ]);
+  }
+
+  function addOne(item) {
+    console.log(item)
+  }
+
 
   const token = localStorage.getItem("usersToken");
   console.log(token);
@@ -39,6 +72,27 @@ const Menu = () => {
         setDrinks(drinks);
       });
   }, [token]);
+
+  //   function toOrder(e) {
+  //     e.preventDefault()
+  //     setOrder({
+  //         "client": "string",
+  //         "table": "2",
+  //         "products": [
+  //           {
+  //             "id": 31,
+  //             "qtd": 2,
+  //             "flavor": null,
+  //             "complement": null,
+  //           }
+  //         ]
+  //       })
+  // }
+
+  function teste(e) {
+    e.preventDefault()
+    console.log(order)
+  }
 
   return (
     <main className="menu">
@@ -85,35 +139,12 @@ const Menu = () => {
                     itemPrice={item.price}
                     itemFlavor={item.flavor}
                     itemNameKey={item.id}
-                    divOnClick={() => {
-                      setBreakfast([
-                        ...breakfast,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
+                    divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
             </div>
           ) : (
             <div className="all-day-menu">
-              {/* {allDay &&
-              allDay.map((item) => (
-                <Products
-                  divClassName="container-food"
-                  itemName={item.name}
-                  divId={item.id}
-                  ImgSrc={item.image}
-                  itemPrice={item.price}
-                  itemFlavor={item.flavor}
-                  itemNameKey={item.id}
-                  divOnClick={() => {
-                    setAllDay([
-                      ...allDay,
-                      { itemName: item.name, itemPrice: item.price },
-                    ]);
-                  }}
-                />
-              ))} */}
 
               <h1 className="topics">✨ Hambúrguers </h1>
 
@@ -130,12 +161,7 @@ const Menu = () => {
                       item.complement ? ` com ${item.complement}` : null
                     }
                     itemNameKey={item.id}
-                    divOnClick={() => {
-                      setBurgers([
-                        ...burgers,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
+                    divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
               <h1 className="topics"> ✨ Acompanhamentos </h1>
@@ -149,12 +175,7 @@ const Menu = () => {
                     itemPrice={item.price}
                     itemFlavor={item.flavor}
                     itemNameKey={item.id}
-                    divOnClick={() => {
-                      setSide([
-                        ...side,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
+                    divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
 
@@ -169,18 +190,40 @@ const Menu = () => {
                     itemPrice={item.price}
                     itemFlavor={item.flavor}
                     itemNameKey={item.id}
-                    divOnClick={() => {
-                      setDrinks([
-                        ...drinks,
-                        { itemName: item.name, itemPrice: item.price },
-                      ]);
-                    }}
+                    divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
             </div>
           )}
         </div>
       </form>
+
+      <aside>
+        <section className="content">
+          <section className="items-section">
+            {order && order.map((item) => {
+              totalCost = totalCost + (Number(item.itemPrice) * item.itemQtd)
+              console.log(totalCost)
+              return (
+                <>
+                  <CartItems
+                    itemNameKey={item.itemNameKey}
+                    itemName={item.itemName}
+                    itemPrice={item.itemPrice}
+                    itemQtd={item.itemQtd}
+                    onClickAdd={() => addOne(item)}
+                  />
+                </>
+              )
+            })}
+          </section>
+          <p>Total do Pedido: {totalCost},00</p>
+        </section>
+        <Button btnClass="order" btnText='Fazer Pedido' btnOnClick={(e) => teste(e)}></Button>
+      </aside>
+
+
+
     </main>
   );
 };
