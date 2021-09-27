@@ -8,7 +8,6 @@ import { signUpWithEmailAndPassword } from "../../services/data.js";
 
 import { useHistory } from "react-router";
 
-
 const SignUp = () => {
   const ValueAndError = (validate) => {
     const history = useHistory();
@@ -86,6 +85,7 @@ const SignUp = () => {
         <section className="form-input">
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="name"
               type="text"
               placeholder="Nome"
@@ -98,6 +98,7 @@ const SignUp = () => {
 
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="email"
               id="email"
               type="text"
@@ -110,6 +111,7 @@ const SignUp = () => {
 
           <fieldset className="margin-input">
             <Input
+              className="input"
               name="password"
               id="password"
               type="password"
@@ -144,11 +146,7 @@ const SignUp = () => {
           Cozinheiro(a)
         </label>
         <p className="errorMessage"> {errors.role && errors.role}</p>
-        <Button
-          btnClass="createAccount"
-          btnText="Cadastrar"
-          btnType="submit"
-        />
+        <Button btnClass="createAccount" btnText="Cadastrar" btnType="submit" />
       </form>
     </main>
   );
