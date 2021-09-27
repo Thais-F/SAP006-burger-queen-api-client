@@ -10,6 +10,11 @@ const Cartmenu = ({ itemsArray }) => {
         setItemQuantity(itemQuantity + 1)
     }
 
+    function deleteItem(e) {
+        e.preventDefault()
+        e.target.parentNode.remove()
+    }
+
     const [itemQuantity, setItemQuantity] = useState(1)
 
     return (
@@ -17,17 +22,19 @@ const Cartmenu = ({ itemsArray }) => {
             <section className="content">
                 <section className="items-section">
                     {itemsArray.map((item) => {
-                        totalCost = totalCost + Number(item.price)
+                        totalCost = totalCost + (Number(item.itemPrice) * item.itemQtd)
                         console.log(totalCost)
                         return (
                             <p className="p-items">
-                                <span id="qnt">{itemQuantity}</span>
+                                {/* <span id="qnt">{itemQuantity}</span> */}
                                 <CartItems
-                                    key={item.id}
-                                    name={item.name}
-                                    price={item.price}
+                                     itemNameKey={item.itemNameKey}
+                                     itemName={item.itemName}
+                                     itemPrice={item.itemPrice}
+                                     itemQtd={item.itemQtd}
                                 />
                                 <button id={item.id} onClick={(e) => addOne(e)}>+</button>
+                                <button onClick={(e) => deleteItem(e)}>aqui</button>
                             </p>
                         )
                     })}
