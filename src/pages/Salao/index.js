@@ -32,9 +32,11 @@ const Menu = () => {
   return (
     <main className="menu">
       <h1>Menu e Atendimento</h1>
-      <nav className="btn-menu">
+      <nav className="btn-mesa">
+
+      <div className="btn-menu">
         <Button
-          className="categoriesBtn"
+          btnClass="categoriesBtn"
           id="breakfast"
           btnText="Café da Manhã"
           btnOnClick={(e) => {
@@ -43,7 +45,8 @@ const Menu = () => {
           }}
         />
         <Button
-          className="categoriesBtn"
+        btnType="button"
+          btnClass="categoriesBtn"
           id="all-day"
           btnText="All Day"
           btnOnClick={(e) => {
@@ -51,16 +54,18 @@ const Menu = () => {
             setMenu(false);
           }}
         />
-      </nav>
-     
-      <form className="container-salao">
-      <div className="cliente-mesa">
+        </div>
+          <div className="cliente-mesa">
         
 
         <Input className="client" placeholder="Cliente"></Input>
         <InputSelect />
       </div>
+      </nav>
+     
+      
 
+      <form className="container-salao">
       <div className="cards-menu">
         {menu ? (
           <div className="breakfast-menu">

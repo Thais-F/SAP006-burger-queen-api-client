@@ -1,14 +1,39 @@
-.container-food{
+/* .container-food{
 display: flex;
 flex-direction: column;
+} */
+
+
+.container-salao{
+/* justify-content: space-around; */
+display: flex;
+/* flex-direction: row-reverse */
 }
 
-.menu-um{
-    margin-top: 15%;
+.cards-menu{
+    background-color:white;
+    width: 50%;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    border-radius: 3%;
+    box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
+    overflow-y: scroll;
+    height: 75vh;
 }
+
+/* .menu-um{
+    margin-top: 15%;
+} */
 
 .breakfast-menu{
- margin-top: 15%;
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.all-day-menu{
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
 .divFlavor,
@@ -24,15 +49,43 @@ flex-direction: column;
 }
 
 .img-food{
-    width: 10%;
+    /* width: 10%; */
+    width: 15%;
+    border-radius: 50%;
 }
 
+.product-info{
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.divName{
+    margin-top: 5%;
+}
+
+
+.btn-mesa{
+ display: flex;
+justify-content: space-around;
+width: 100%;
+margin-top: 6%;
+}
 
 .addBtn{
     border: none;
     align-self: baseline;
     margin-bottom: 2%;
+    color: rgb(23, 212, 23);
+    background: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
 }
+
+.addBtn:hover{
+    color: rgb(10, 172, 4);
+}
+
 
 .menu-um{
     background-color: white;
@@ -41,9 +94,14 @@ flex-direction: column;
 }
 
 .cliente-mesa{
-    
-    margin-top: 5%; 
+    display: flex;
+    /* margin-top: 5%;  */
+    justify-content: space-evenly;
 }
+
+/* .client{
+    margin-bottom: 20px;
+} */
 
 .menu{
     height: 100%;
@@ -52,9 +110,47 @@ flex-direction: column;
 }
 
 .btn-menu{
-display: flex;
+display: flex;    
+align-self: flex-start;
+width: 50%;
+justify-content: space-evenly;
+/* margin-left: 15%; */
 }
 
 .client{
     font-size: 30px;
+}
+
+.categoriesBtn{
+    width: 40%;
+    height: 30px;
+        background-color: #dc97df;
+        color: #ffffff;
+        border: none;
+        border-radius: 5%;
+}
+
+.categoriesBtn:hover {
+    background-color: #e159e6;
+    color: #fff;
+    cursor: pointer;
+ }
+
+  .categoriesBtn:active {
+    color: rgb(0, 0, 0);
+    box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.18),
+    0 4px 13px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+
+  .cards-menu-break {
+    background-color: white;
+    width: 50%;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    border-radius: 3%;
+    box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
+    /* overflow-y: scroll; */
+    height: 60vh;
 }
