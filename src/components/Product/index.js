@@ -14,6 +14,7 @@ export function Products({
   itemPriceKey,
   itemFlavor,
   ImgSrc,
+  itemComplement
 }) {
   return (
     <>
@@ -22,7 +23,7 @@ export function Products({
           <img src={ImgSrc} className="img-food" alt="img-food"></img>
       
         <h1 className="divName" key={itemNameKey}> 
-          {itemName} {itemPriceKey} {itemFlavor} {" "} R$ {itemPrice},00 <Button btnOnClick={divOnClick} btnClass="addBtn"  btnText="✛" />
+          {itemName} {itemPriceKey} {itemFlavor} {" "} {itemComplement} R$ {itemPrice},00 <Button btnOnClick={divOnClick} btnClass="addBtn"  btnText="✛" />
         </h1>
         </section>
         <div className="divButton">
