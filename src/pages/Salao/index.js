@@ -66,7 +66,7 @@ const Menu = () => {
           />
         </div>
         <div className="cliente-mesa">
-          <Input className="client" placeholder="Cliente"></Input>
+          <Input className="input client" placeholder="Cliente"></Input>
           <InputSelect />
         </div>
       </nav>

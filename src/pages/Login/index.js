@@ -79,7 +79,7 @@ function Login() {
         <div className="input-login">
           <fieldset className="margin-input">
             <Input
-              className="input-email"
+              className="input input-email"
               placeholder="Email"
               name="email"
               value={values.email}
@@ -91,6 +91,7 @@ function Login() {
           </fieldset>
           <fieldset className="margin-input">
             <Input
+            className="input"
               placeholder="Senha"
               name="password"
               value={values.password}

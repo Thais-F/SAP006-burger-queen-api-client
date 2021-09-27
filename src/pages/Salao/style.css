@@ -7,11 +7,10 @@ flex-direction: column;
 .container-salao{
 /* justify-content: space-around; */
 display: flex;
-/* flex-direction: row-reverse */
 }
 
 .cards-menu{
-    background-color:white;
+    background-color: var(--white);
     width: 50%;
     margin-top: 4%;
     display: flex;
@@ -87,7 +86,7 @@ margin-top: 6%;
 
 
 .menu-um{
-    background-color: white;
+    background-color: var(--white);
     width: 45%;
     margin-top: 15%;
 }
@@ -96,11 +95,16 @@ margin-top: 6%;
     display: flex;
     /* margin-top: 5%;  */
     justify-content: space-evenly;
+    
 }
 
-/* .client{
-    margin-bottom: 20px;
-} */
+.client{
+    margin-bottom: 0;
+    font-size: 15px;
+    width: 50%;
+    background-color: var(--white);
+    color: black;
+}
 
 .menu{
     height: 100%;
@@ -116,22 +120,19 @@ justify-content: space-evenly;
 /* margin-left: 15%; */
 }
 
-.client{
-    font-size: 30px;
-}
 
 .categoriesBtn{
     width: 40%;
     height: 30px;
         background-color: #dc97df;
-        color: #ffffff;
+        color: var(--white);
         border: none;
         border-radius: 5%;
 }
 
 .categoriesBtn:hover {
     background-color: #e159e6;
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
  }
 
@@ -143,7 +144,7 @@ justify-content: space-evenly;
   
 
   .cards-menu-break {
-    background-color: white;
+    background-color: var(--white);
     width: 50%;
     margin-top: 4%;
     display: flex;
