@@ -1,5 +1,4 @@
 import Input from "../../components/inputs/index.js";
-// import Cartmenu from "../../components/cartmenu/cartmenu.js";
 import Button from '../../components/Button/button.js'
 import '../../components/Button/style.css'
 import { useState, useEffect } from "react";
@@ -16,38 +15,68 @@ const Menu = () => {
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
-  // const [ estadoAtual, atualizarEstado] = useState(0)
   let totalCost = 0
 
 
-  const [order, setOrder] = useState([])
+  const [order, setOrder] = useState([]);
 
-  //   function addOne(e) {
-  //     e.preventDefault()
-  //     setItemQuantity(itemQuantity + 1)
-  // }
-
-  // function deleteItem(e) {
-  //     e.preventDefault()
-  //     e.target.parentNode.remove()
-  // }
+  useEffect(() => {
+    console.log(order)
+  }, [order])
 
   function addOrder(e, item) {
     e.preventDefault()
-    console.log(item)
+
+    const searchItem = order.find(element => element.itemNameKey === item.id)
+
+    if (searchItem) {
+      searchItem.itemQtd += 1
+      setOrder([
+        ...order
+      ])
+    }
+
+    else if (!searchItem) {
+      setOrder([
+        ...order,
+        { itemName: item.name, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
+      ])
+    }
+  };
+
+
+  function addOneItem(item) {
+    item.itemQtd += 1
     setOrder([
-      ...order,
-      { itemName: item.name, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
-    ]);
+      ...order
+    ])
   }
 
-  function addOne(item) {
-    console.log(item)
+  function removeOneItem(item) {
+    if (item.itemQtd === 1) {
+      order.splice(order.indexOf(item), 1);
+      setOrder([
+        ...order
+      ])
+    }
+    else {
+      item.itemQtd -= 1
+      setOrder([
+        ...order
+      ])
+    }
+  }
+
+  function deleteItem(item) {
+    order.splice(order.indexOf(item), 1);
+    setOrder([
+      ...order
+    ])
   }
 
 
   const token = localStorage.getItem("usersToken");
-  console.log(token);
+  // console.log(token);
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/products", {
@@ -203,7 +232,7 @@ const Menu = () => {
           <section className="items-section">
             {order && order.map((item) => {
               totalCost = totalCost + (Number(item.itemPrice) * item.itemQtd)
-              console.log(totalCost)
+              // console.log(totalCost)
               return (
                 <>
                   <CartItems
@@ -211,7 +240,9 @@ const Menu = () => {
                     itemName={item.itemName}
                     itemPrice={item.itemPrice}
                     itemQtd={item.itemQtd}
-                    onClickAdd={() => addOne(item)}
+                    onClickAdd={() => addOneItem(item)}
+                    onClickRemove={() => removeOneItem(item)}
+                    onClickDelete={() => deleteItem(item)}
                   />
                 </>
               )

@@ -1,6 +1,6 @@
 import './style.css';
 
-const CartItems = ({itemNameKey, itemName, itemPrice, itemQtd, onClickAdd, onClickRemove}) => {
+const CartItems = ({itemNameKey, itemName, itemPrice, itemQtd, onClickAdd, onClickRemove, onClickDelete}) => {
 
     return (
             <article key={itemNameKey}>
@@ -8,6 +8,7 @@ const CartItems = ({itemNameKey, itemName, itemPrice, itemQtd, onClickAdd, onCli
                 </p>
                 <button onClick={onClickAdd}>+</button>
                 <button onClick={onClickRemove}>-</button>
+                <button onClick={onClickDelete}>ex</button>
             </article>
     )
 }
