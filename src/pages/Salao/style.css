@@ -1,182 +1,178 @@
-/* .container-food{
-display: flex;
-flex-direction: column;
-} */
-
-
-.container-salao{
-/* justify-content: space-around; */
-display: flex;
+.container-salao {
+  justify-content: space-around;
+  display: flex;
 }
 
-.cards-menu{
-    background-color: var(--white);
-    width: 50%;
-    margin-top: 4%;
-    display: flex;
-    justify-content: center;
-    border-radius: 3%;
-    box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
-    overflow-y: scroll;
-    height: 75vh;
+.cards-menu {
+  background-color: var(--white);
+  width: 42%;
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  border-radius: 3%;
+  box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
+  overflow-y: scroll;
+  height: 73vh;
 }
 
-/* .menu-um{
-    margin-top: 15%;
-} */
-
-.breakfast-menu{
-    margin-top: 15%;
-    margin-left: 5%;
+.breakfast-menu {
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
-.all-day-menu{
-    margin-left: 5%;
+.all-day-menu {
+  margin-left: 5%;
 }
 
-.divFlavor,
-  .divClassName,
-  .divKey,
-  .divName,
-  .divPrice,
-  .itemName,
-  .itemPrice,
-  .itemNameKey,
-  .itemPriceKey{
-    font-size: 12px;
+
+.divName,
+.divPrice {
+  font-size: 12px;
 }
 
-.img-food{
-    /* width: 10%; */
-    width: 15%;
-    border-radius: 50%;
-}
-
-.product-info{
-    display: flex;
-    margin-bottom: 2%;
-}
-
-.divName{
+.divName {
     margin-top: 5%;
+  }
+
+.img-food {
+  width: 15%;
+  border-radius: 50%;
 }
 
-
-.btn-mesa{
- display: flex;
-justify-content: space-around;
-width: 100%;
-margin-top: 6%;
+.product-info {
+  display: flex;
+  margin-bottom: 2%;
 }
 
-.addBtn{
-    border: none;
-    align-self: baseline;
-    margin-bottom: 2%;
-    color: rgb(23, 212, 23);
-    background: none;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.addBtn:hover{
-    color: rgb(10, 172, 4);
-}
-
-
-.menu-um{
-    background-color: var(--white);
-    width: 45%;
-    margin-top: 15%;
-}
-
-.cliente-mesa{
+.burger-info{
     display: flex;
-    /* margin-top: 5%;  */
-    justify-content: space-evenly;
-    
+    flex-direction: row;
 }
 
-.client{
-    margin-bottom: 0;
-    font-size: 15px;
-    width: 50%;
-    background-color: var(--white);
-    color: black;
+.hamburguers{
+    display: flex;
 }
 
-.menu{
-    height: 100%;
+
+.options-burger{
     display: flex;
     flex-direction: column;
 }
+.img-burger{
+    width: 15%;
+    height: 10%;
+    margin-top: 5%;
+}
 
-.btn-menu{
-display: flex;    
-align-self: flex-start;
-width: 50%;
-justify-content: space-evenly;
-/* margin-left: 15%; */
+.divBurger {
+  font-size: 12px;
+}
+
+.btn-mesa {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.addBtn {
+  border: none;
+  align-self: baseline;
+  margin-bottom: 2%;
+  color: rgb(23, 212, 23);
+  background: none;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  color: rgb(10, 172, 4);
+}
+
+.menu-um {
+  background-color: var(--white);
+  width: 45%;
+  margin-top: 15%;
+}
+
+.cliente-mesa {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.client {
+  margin-bottom: 0;
+  font-size: 15px;
+  width: 50%;
+  background-color: var(--white);
+  color: black;
+}
+
+.menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-menu {
+  display: flex;
+  align-self: flex-start;
+  width: 50%;
+  justify-content: space-evenly;
+  /* margin-left: 15%; */
 }
 
 aside {
-    display: flex;
-    flex-direction: column;
-    float: right;
-    margin-right: 5%;
+  display: flex;
+  flex-direction: column;
+  float: right;
+  /* margin-right: 5%; */
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    width: 230px;
-    height: 340px;
-    border-radius: 10px;
-    padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  width: 230px;
+  height: 340px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin-top: 22%;
 }
 
-.categoriesBtn{
-    width: 40%;
-    height: 30px;
-        background-color: #dc97df;
-        color: var(--white);
-        border: none;
-        border-radius: 5%;
+.categoriesBtn {
+  width: 35%;
+  height: 30px;
+  background-color: #dc97df;
+  color: var(--white);
+  border: none;
+  border-radius: 5%;
 }
 
 .categoriesBtn:hover {
-    background-color: #e159e6;
-    color: var(--white);
-    cursor: pointer;
- }
-
-  .categoriesBtn:active {
-    color: rgb(0, 0, 0);
-    box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.18),
-    0 4px 13px 0 rgba(0, 0, 0, 0.15);
-  }
-  
-
-  .cards-menu-break {
-    background-color: var(--white);
-    width: 50%;
-    margin-top: 4%;
-    display: flex;
-    justify-content: center;
-    border-radius: 3%;
-    box-shadow: 0px 4px 20px 4px rgb(73 73 73 / 25%);
-    /* overflow-y: scroll; */
-    height: 60vh;
+  background-color: #e159e6;
+  color: var(--white);
+  cursor: pointer;
 }
 
-.topics{
-    font-size: 18px;
-    justify-content: center;
-    display: flex;
-    color: var(--purple);
-    margin-top: 5%;
+.categoriesBtn:active {
+  color: rgb(0, 0, 0);
+  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 13px 0 rgba(0, 0, 0, 0.15);
+}
+
+.topics {
+  font-size: 15.5px;
+  justify-content: center;
+  display: flex;
+  color: var(--purple);
+  margin-top: 5%;
+  margin-bottom: 2%;
+  margin-right: 12px;
+}
+
+.itemName {
+  display: none;
 }
