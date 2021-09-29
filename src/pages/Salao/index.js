@@ -1,79 +1,74 @@
 import Input from "../../components/inputs/index.js";
-import Button from '../../components/Button/button.js'
-import '../../components/Button/style.css'
+import Button from "../../components/Button/button.js";
+import "../../components/Button/style.css";
 import { useState, useEffect } from "react";
 import InputSelect from "../../components/inputs/InputSelect.js";
 import { Products } from "../../components/Product/index.js";
 import "./style.css";
-import CartItems from "../../components/cartItems/cartitems.js"
+import CartItems from "../../components/cartItems/cartitems.js";
+import { Burger } from "../../components/Burger/burger";
+import burger from "../../img/burger.png";
+// import { Cardapio } from "../../components/Burger/menu.js";
 
 const Menu = () => {
   const [menu, setMenu] = useState(true);
   const [breakfast, setBreakfast] = useState([]);
-  // const [allDay, setAllDay] = useState([]);
   const [burgers, setBurgers] = useState([]);
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
-  let totalCost = 0
-
+  let totalCost = 0;
 
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    console.log(order)
-  }, [order])
+    console.log(order);
+  }, [order]);
 
   function addOrder(e, item) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const searchItem = order.find(element => element.itemNameKey === item.id)
+    const searchItem = order.find((element) => element.itemNameKey === item.id);
 
     if (searchItem) {
-      searchItem.itemQtd += 1
-      setOrder([
-        ...order
-      ])
-    }
-
-    else if (!searchItem) {
+      searchItem.itemQtd += 1;
+      setOrder([...order]);
+    } else if (!searchItem) {
       setOrder([
         ...order,
-        { itemName: item.name, itemFlavor: item.flavor, itemComplement: item.complement, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
-      ])
+        {
+          itemName: item.name,
+          itemFlavor: item.flavor,
+          itemComplement: item.complement,
+          itemPrice: item.price,
+          itemNameKey: item.id,
+          itemQtd: 1,
+        },
+      ]);
     }
-  };
-
-
-  function addOneItem(item) {
-    item.itemQtd += 1
-    setOrder([
-      ...order
-    ])
   }
 
-  function removeOneItem(item) {
+  function addOneItem(e, item) {
+    e.preventDefault();
+    item.itemQtd += 1;
+    setOrder([...order]);
+  }
+
+  function removeOneItem(e, item) {
+    e.preventDefault();
     if (item.itemQtd === 1) {
       order.splice(order.indexOf(item), 1);
-      setOrder([
-        ...order
-      ])
-    }
-    else {
-      item.itemQtd -= 1
-      setOrder([
-        ...order
-      ])
+      setOrder([...order]);
+    } else {
+      item.itemQtd -= 1;
+      setOrder([...order]);
     }
   }
 
   function deleteItem(item) {
     order.splice(order.indexOf(item), 1);
-    setOrder([
-      ...order
-    ])
+    setOrder([...order]);
   }
-
 
   const token = localStorage.getItem("usersToken");
   // console.log(token);
@@ -89,10 +84,6 @@ const Menu = () => {
       .then((data) => {
         const breakfast = data.filter((item) => item.type === "breakfast");
         setBreakfast(breakfast);
-        // const allDay = data.filter((item) => item.type === "all-day");
-        // console.log(allDay);
-        // setAllDay(allDay);
-
         const burgers = data.filter((item) => item.id >= 33 && item.id <= 50);
         setBurgers(burgers);
         const side = data.filter((item) => item.sub_type === "side");
@@ -119,8 +110,8 @@ const Menu = () => {
   // }
 
   function teste(e) {
-    e.preventDefault()
-    console.log(order)
+    e.preventDefault();
+    console.log(order);
   }
 
   return (
@@ -158,6 +149,11 @@ const Menu = () => {
         <div className="cards-menu">
           {menu ? (
             <div className="breakfast-menu">
+              <div className="topics-breakfast">
+                {" "}
+                <h3 className="topics"> ✨ Café da Manhã </h3>
+              </div>
+
               {breakfast &&
                 breakfast.map((item) => (
                   <Products
@@ -167,32 +163,155 @@ const Menu = () => {
                     ImgSrc={item.image}
                     itemPrice={item.price}
                     itemFlavor={item.flavor}
-                    itemNameKey={item.id}                   
+                    itemNameKey={item.id}
                     divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
             </div>
           ) : (
             <div className="all-day-menu">
+              {/* <Cardapio burgers={burgers} /> */}
+              <h3 className="topics"> ✨ Hambúrguer Simples </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(0, 3)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
 
-              <h1 className="topics">✨ Hambúrguers </h1>
+              <h3 className="topics">✨ Hambúrguer simples com queijo </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(3, 6)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
 
-              {burgers &&
-                burgers.map((item) => (
-                  <Products
-                    divClassName="container-food"
-                    itemName={item.name}
-                    divId={item.id}
-                    ImgSrc={item.image}
-                    itemPrice={item.price}
-                    itemFlavor={item.flavor}
-                    itemComplement={
-                      item.complement ? ` com ${item.complement}` : null
-                    }
-                    itemNameKey={item.id}
-                    divOnClick={(e) => addOrder(e, item)}
-                  />
-                ))}
+              <h3 className="topics">✨ Hambúrguer simples com ovo </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(6, 9)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
+
+              <h3 className="topics">✨ Hambúrguer Duplo </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(9, 12)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
+              <h3 className="topics">✨ Hambúrguer duplo com ovo </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(12, 15)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
+              <h3 className="topics">✨ Hambúrguer duplo com queijo </h3>
+              <div className="hamburguers">
+                <img src={burger} className="img-burger" alt="burger" />
+                <div className="options-burger">
+                  {burgers &&
+                    burgers
+                      .slice(15, 18)
+                      .map((item) => (
+                        <Burger
+                          divClassName="container-burger"
+                          itemName={item.name}
+                          divId={item.id}
+                          itemPrice={item.price}
+                          itemFlavor={item.flavor}
+                          itemComplement={
+                            item.complement ? ` com ${item.complement}` : null
+                          }
+                          itemNameKey={item.id}
+                          divOnClick={(e) => addOrder(e, item)}
+                        />
+                      ))}
+                </div>
+              </div>
               <h1 className="topics"> ✨ Acompanhamentos </h1>
               {side &&
                 side.map((item) => (
@@ -225,40 +344,44 @@ const Menu = () => {
             </div>
           )}
         </div>
-      </form>
 
-      <aside>
-        <section className="content">
-          <section className="items-section">
-            {order && order.map((item) => {
-              totalCost = totalCost + (Number(item.itemPrice) * item.itemQtd)
-              // console.log(totalCost)
-              return (
-                <>
-                  <CartItems
-                    itemNameKey={item.itemNameKey}
-                    itemName={item.itemName}
-                    itemPrice={item.itemPrice}
-                    itemQtd={item.itemQtd}
-                    itemFlavor={item.itemFlavor}
-                    itemComplement={
-                      item.itemComplement ? ` com ${item.itemComplement}` : null
-                    }
-                    onClickAdd={() => addOneItem(item)}
-                    onClickRemove={() => removeOneItem(item)}
-                    onClickDelete={() => deleteItem(item)}
-                  />
-                </>
-              )
-            })}
+        <aside>
+          <section className="content">
+            <section className="items-section">
+              {order &&
+                order.map((item) => {
+                  totalCost = totalCost + Number(item.itemPrice) * item.itemQtd;
+                  // console.log(totalCost)
+                  return (
+                    <>
+                      <CartItems
+                        itemNameKey={item.itemNameKey}
+                        itemName={item.itemName}
+                        itemPrice={item.itemPrice}
+                        itemQtd={item.itemQtd}
+                        itemFlavor={item.itemFlavor}
+                        itemComplement={
+                          item.itemComplement
+                            ? ` com ${item.itemComplement}`
+                            : null
+                        }
+                        onClickAdd={(e) => addOneItem(e, item)}
+                        onClickRemove={(e) => removeOneItem(e, item)}
+                        onClickDelete={() => deleteItem(item)}
+                      />
+                    </>
+                  );
+                })}
+            </section>
+            <p>Total do Pedido: {totalCost},00</p>
           </section>
-          <p>Total do Pedido: {totalCost},00</p>
-        </section>
-        <Button btnClass="order" btnText='Fazer Pedido' btnOnClick={(e) => teste(e)}></Button>
-      </aside>
-
-
-
+          <Button
+            btnClass="order"
+            btnText="Fazer Pedido"
+            btnOnClick={(e) => teste(e)}
+          ></Button>
+        </aside>
+      </form>
     </main>
   );
 };

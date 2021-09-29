@@ -5,11 +5,11 @@ const CartItems = ({itemNameKey, itemName, itemPrice, itemQtd, itemFlavor, itemC
     return (
             <article key={itemNameKey}>
                 <p>{itemQtd}-{itemName} {itemFlavor} {itemComplement}
- - {itemPrice},00 
-                </p>
-                <button onClick={onClickAdd}>+</button>
+ - {itemPrice},00      <p>    <button onClick={onClickAdd}>+</button>
                 <button onClick={onClickRemove}>-</button>
-                <button onClick={onClickDelete}>ex</button>
+                <button onClick={onClickDelete}>ex</button></p>
+                </p>
+         
             </article>
     )
 }
