@@ -130,6 +130,12 @@ aside {
   /* margin-right: 5%; */
 }
 
+.items-section{
+    overflow-y: scroll;
+    margin-top: 6%;
+    margin-left: 6%;
+}
+
 .content {
   display: flex;
   flex-direction: column;

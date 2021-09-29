@@ -1,5 +1,4 @@
 import Input from "../../components/inputs/index.js";
-// import Cartmenu from "../../components/cartmenu/cartmenu.js";
 import Button from "../../components/Button/button.js";
 import "../../components/Button/style.css";
 import { useState, useEffect } from "react";
@@ -11,7 +10,6 @@ import { Burger } from "../../components/Burger/burger";
 import burger from "../../img/burger.png";
 // import { Cardapio } from "../../components/Burger/menu.js";
 
-
 const Menu = () => {
   const [menu, setMenu] = useState(true);
   const [breakfast, setBreakfast] = useState([]);
@@ -19,41 +17,61 @@ const Menu = () => {
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
 
-  // const [ estadoAtual, atualizarEstado] = useState(0)
   let totalCost = 0;
 
   const [order, setOrder] = useState([]);
 
-  //   function addOne(e) {
-  //     e.preventDefault()
-  //     setItemQuantity(itemQuantity + 1)
-  // }
+  useEffect(() => {
+    console.log(order);
+  }, [order]);
 
-  // function deleteItem(e) {
-  //     e.preventDefault()
-  //     e.target.parentNode.remove()
-  // }
-
-function addOrder(e, item) {
+  function addOrder(e, item) {
     e.preventDefault();
-    console.log(item);
-    setOrder([
-      ...order,
-      {
-        itemName: item.name,
-        itemPrice: item.price,
-        itemNameKey: item.id,
-        itemQtd: 1,
-      },
-    ]);
+
+    const searchItem = order.find((element) => element.itemNameKey === item.id);
+
+    if (searchItem) {
+      searchItem.itemQtd += 1;
+      setOrder([...order]);
+    } else if (!searchItem) {
+      setOrder([
+        ...order,
+        {
+          itemName: item.name,
+          itemFlavor: item.flavor,
+          itemComplement: item.complement,
+          itemPrice: item.price,
+          itemNameKey: item.id,
+          itemQtd: 1,
+        },
+      ]);
+    }
   }
 
-  function addOne(item) {
-    console.log(item);
+  function addOneItem(e, item) {
+    e.preventDefault();
+    item.itemQtd += 1;
+    setOrder([...order]);
+  }
+
+  function removeOneItem(e, item) {
+    e.preventDefault();
+    if (item.itemQtd === 1) {
+      order.splice(order.indexOf(item), 1);
+      setOrder([...order]);
+    } else {
+      item.itemQtd -= 1;
+      setOrder([...order]);
+    }
+  }
+
+  function deleteItem(item) {
+    order.splice(order.indexOf(item), 1);
+    setOrder([...order]);
   }
 
   const token = localStorage.getItem("usersToken");
-  console.log(token);
+  // console.log(token);
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/products", {
@@ -153,9 +171,7 @@ function addOrder(e, item) {
           ) : (
             <div className="all-day-menu">
               {/* <Cardapio burgers={burgers} /> */}
-              {/* <h1 className="topics">✨ Hambúrguers </h1> */}
-
-               <h3 className="topics"> ✨ Hambúrguer Simples </h3>
+              <h3 className="topics"> ✨ Hambúrguer Simples </h3>
               <div className="hamburguers">
                 <img src={burger} className="img-burger" alt="burger" />
                 <div className="options-burger">
@@ -295,7 +311,7 @@ function addOrder(e, item) {
                         />
                       ))}
                 </div>
-              </div> 
+              </div>
               <h1 className="topics"> ✨ Acompanhamentos </h1>
               {side &&
                 side.map((item) => (
@@ -335,7 +351,7 @@ function addOrder(e, item) {
               {order &&
                 order.map((item) => {
                   totalCost = totalCost + Number(item.itemPrice) * item.itemQtd;
-                  console.log(totalCost);
+                  // console.log(totalCost)
                   return (
                     <>
                       <CartItems
@@ -343,7 +359,15 @@ function addOrder(e, item) {
                         itemName={item.itemName}
                         itemPrice={item.itemPrice}
                         itemQtd={item.itemQtd}
-                        onClickAdd={() => addOne(item)}
+                        itemFlavor={item.itemFlavor}
+                        itemComplement={
+                          item.itemComplement
+                            ? ` com ${item.itemComplement}`
+                            : null
+                        }
+                        onClickAdd={(e) => addOneItem(e, item)}
+                        onClickRemove={(e) => removeOneItem(e, item)}
+                        onClickDelete={() => deleteItem(item)}
                       />
                     </>
                   );
