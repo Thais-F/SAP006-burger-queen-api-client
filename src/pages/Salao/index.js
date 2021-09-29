@@ -39,7 +39,7 @@ const Menu = () => {
     else if (!searchItem) {
       setOrder([
         ...order,
-        { itemName: item.name, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
+        { itemName: item.name, itemFlavor: item.flavor, itemComplement: item.complement, itemPrice: item.price, itemNameKey: item.id, itemQtd: 1 },
       ])
     }
   };
@@ -167,7 +167,7 @@ const Menu = () => {
                     ImgSrc={item.image}
                     itemPrice={item.price}
                     itemFlavor={item.flavor}
-                    itemNameKey={item.id}
+                    itemNameKey={item.id}                   
                     divOnClick={(e) => addOrder(e, item)}
                   />
                 ))}
@@ -240,6 +240,10 @@ const Menu = () => {
                     itemName={item.itemName}
                     itemPrice={item.itemPrice}
                     itemQtd={item.itemQtd}
+                    itemFlavor={item.itemFlavor}
+                    itemComplement={
+                      item.itemComplement ? ` com ${item.itemComplement}` : null
+                    }
                     onClickAdd={() => addOneItem(item)}
                     onClickRemove={() => removeOneItem(item)}
                     onClickDelete={() => deleteItem(item)}
