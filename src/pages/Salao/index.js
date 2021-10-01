@@ -71,7 +71,7 @@ const Menu = () => {
   }
 
   const token = localStorage.getItem("usersToken");
-  // console.log(token);
+  console.log(token);
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/products", {
