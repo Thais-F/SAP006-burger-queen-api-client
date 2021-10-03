@@ -2,7 +2,7 @@ import React from "react";
 // import ReactDOM from 'react-dom';
 import "../inputs/style.css";
 
-const Input = ({ name, type, placeholder, value, onChange, className }) => {
+const Input = ({ name, type, placeholder, value, onChange, className, }) => {
   return (
     <input
       name={name}
