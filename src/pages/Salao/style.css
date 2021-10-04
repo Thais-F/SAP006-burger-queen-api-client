@@ -1,3 +1,51 @@
+a {
+  margin: 0%;
+}
+
+.inicio{
+  display: flex;
+  align-items: center;
+  width: 95%;
+  
+}
+.img-caldeirao{
+  width: 8%;
+  align-self: flex-start; 
+  margin-inline: auto;
+}
+
+.ready-logout{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2%;
+
+}
+
+.pedidos-prontos{
+  width: 111%;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: var(--black);
+  font-family: "Kaisei Tokumin", serif;
+
+}
+
+.logout{
+  border: none;
+  background: none;
+  font-weight: 700;
+  color: var(--purple);
+
+}
+
+.pedidos-prontos:hover{
+  color: var(--purple);
+}
+
 .container-salao {
   justify-content: space-around;
   display: flex;
@@ -106,7 +154,7 @@
   font-size: 15px;
   width: 50%;
   background-color: var(--white);
-  color: black;
+  color: var(--black);
 }
 
 .menu {

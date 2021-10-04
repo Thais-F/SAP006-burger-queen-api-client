@@ -2,6 +2,7 @@ import Input from "../../components/inputs/index.js";
 import Button from "../../components/Button/button.js";
 import "../../components/Button/style.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import InputSelect from "../../components/inputs/InputSelect.js";
 import { Products } from "../../components/Product/index.js";
 import "./style.css";
@@ -10,6 +11,7 @@ import { Burger } from "../../components/Burger/burger";
 import burger from "../../img/burger.png";
 import { sendOrderToAPI } from "../../services/data.js";
 // import { Cardapio } from "../../components/Burger/menu.js";
+import caldeirao from "../../img/caldeirao.png";
 
 const Menu = () => {
   const [menu, setMenu] = useState(true);
@@ -84,7 +86,7 @@ const Menu = () => {
   }
 
   const token = localStorage.getItem("usersToken");
-  // console.log(token);
+  console.log(token);
 
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/products", {
@@ -142,7 +144,27 @@ const Menu = () => {
 
   return (
     <main className="menu">
-      <h1>Menu e Atendimento</h1>
+
+    <div className="inicio"> 
+   <img src={caldeirao} className="img-caldeirao" alt="caldeirao" />
+      <div className="ready-logout"> 
+   
+      <Link to="/orders">
+        <Button
+          btnClass="pedidos-prontos"
+          btnText="Pedidos prontos"
+        />
+      </Link>
+
+      <Link to="/login">
+        <Button
+          btnClass="logout"
+          btnText="Sair "
+        />
+      </Link>
+      </div>
+      </div>
+
       <nav className="btn-mesa">
         <div className="btn-menu">
           <Button

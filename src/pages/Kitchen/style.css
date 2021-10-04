@@ -1,0 +1,73 @@
+.container-kitchen{
+    background-color: white;
+}
+
+.header{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    background-color: var(--yellow);
+}
+
+.img-logo{
+    width: 23%;
+    margin-top: 2%;
+    margin-right: 0;
+
+}
+
+.pedidos{
+    font-size: 23px;
+    color: var(--purple);
+
+}
+
+.head{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.orders{
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+.list-orders{
+    border: 2px solid var(--yellow);
+    width: 345px;
+    height: 150px;
+}
+
+.customerTable{
+    background-color: var(--yellow);
+    padding: 2%;
+    width: 230px;
+    height: 150px;
+}
+
+.orders-kitchen{
+    line-height: 0.15;
+}
+
+.preparar-finalizar{
+    margin-top: 5%;
+}
+
+.categories {
+    width: 25%;
+    height: 30px;
+    background-color: #dc97df;
+    color: var(--white);
+    border: none;
+    border-radius: 5%;
+}
+
+.finish-ready{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;
+}
