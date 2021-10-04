@@ -42,3 +42,14 @@ export const loginWithUserPassword = (email, password) => {
     }),
   });
 };
+
+export const sendOrderToAPI = (APIBody) => {
+  return fetch("https://lab-api-bq.herokuapp.com/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.getItem('usersToken')
+    },
+    body: JSON.stringify(APIBody),
+  });
+};

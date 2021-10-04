@@ -45,7 +45,7 @@ function Kitchen() {
       body: JSON.stringify(status),
     }).then((response) => {
       response.json().then(() => {
-        alert("Pedido enviado para servir!");
+        alert("Pedido pronto para servir!");
         listaPedidos();
       });
     });

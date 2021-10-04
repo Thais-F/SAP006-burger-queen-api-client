@@ -9,6 +9,7 @@ import "./style.css";
 import CartItems from "../../components/cartItems/cartitems.js";
 import { Burger } from "../../components/Burger/burger";
 import burger from "../../img/burger.png";
+import { sendOrderToAPI } from "../../services/data.js";
 // import { Cardapio } from "../../components/Burger/menu.js";
 import caldeirao from "../../img/caldeirao.png";
 
@@ -18,6 +19,9 @@ const Menu = () => {
   const [burgers, setBurgers] = useState([]);
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [clientName, setClientName] = useState({ clientName: "" })
+  const [clientTable, setClienTable] = useState({ clientTable: "" })
+
 
   let totalCost = 0;
 
@@ -50,6 +54,14 @@ const Menu = () => {
     }
   }
 
+  function handleInputSelectOnChange(e) {
+    setClienTable({ clientTable: e.target.value })
+  }
+
+  function handleInputOnChange(e) {
+    setClientName({ clientName: e.target.value })
+  }
+
   function addOneItem(e, item) {
     e.preventDefault();
     item.itemQtd += 1;
@@ -67,7 +79,8 @@ const Menu = () => {
     }
   }
 
-  function deleteItem(item) {
+  function deleteItem(e, item) {
+    e.preventDefault();
     order.splice(order.indexOf(item), 1);
     setOrder([...order]);
   }
@@ -95,9 +108,38 @@ const Menu = () => {
       });
   }, [token]);
 
-  function teste(e) {
-    e.preventDefault();
-    console.log(order);
+  function toOrder(e) {
+    e.preventDefault()
+
+    const orderProducts = order.map((item) => {
+      return {
+        "id": item.itemNameKey,
+        "qtd": item.itemQtd,
+        "flavor": item.itemFlavor,
+        "complement": item.itemComplement,
+      }
+    })
+
+    const APIBody = ({
+      "client": clientName.clientName,
+      "table": clientTable.clientTable,
+      "products": orderProducts
+    })
+
+    console.log(APIBody)
+    sendOrderToAPI(APIBody)
+      .then((response) => response.json())
+      .then((Json) => {
+        console.log(Json)
+        if (Json.message) {
+          alert('Ocorreu um erro, tente novamente!')
+        } else {
+          alert('Pedido realizado com sucesso!')
+          setOrder([])
+          setClientName({ clientName: "" })
+          setClienTable({ clientTable: "" })
+        }
+      })
   }
 
   return (
@@ -146,8 +188,16 @@ const Menu = () => {
           />
         </div>
         <div className="cliente-mesa">
-          <Input className="input client" placeholder="Cliente"></Input>
-          <InputSelect />
+          <Input className="input client"
+            placeholder="Cliente"
+            onChange={(e) => handleInputOnChange(e)}
+            value={clientName.clientName}
+          >
+          </Input>
+          <InputSelect
+            value={clientTable.clientTable}
+            onChange={(e) => handleInputSelectOnChange(e)}
+          />
         </div>
       </nav>
 
@@ -361,7 +411,7 @@ const Menu = () => {
                   return (
                     <>
                       <CartItems
-                        itemNameKey={item.itemNameKey}
+                        // itemNameKey={item.itemNameKey}
                         itemName={item.itemName}
                         itemPrice={item.itemPrice}
                         itemQtd={item.itemQtd}
@@ -373,18 +423,18 @@ const Menu = () => {
                         }
                         onClickAdd={(e) => addOneItem(e, item)}
                         onClickRemove={(e) => removeOneItem(e, item)}
-                        onClickDelete={() => deleteItem(item)}
+                        onClickDelete={(e) => deleteItem(e, item)}
                       />
                     </>
                   );
                 })}
             </section>
-            <p>Total do Pedido: {totalCost},00</p>
+            <p>Total do Pedido: R$ {totalCost},00</p>
           </section>
           <Button
             btnClass="order"
             btnText="Fazer Pedido"
-            btnOnClick={(e) => teste(e)}
+            btnOnClick={(e) => toOrder(e)}
           ></Button>
         </aside>
       </form>

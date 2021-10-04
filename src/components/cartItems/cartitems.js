@@ -12,16 +12,16 @@ const CartItems = ({
   onClickDelete,
 }) => {
   return (
-    <article key={itemNameKey}>
-      <p>
-        {itemQtd}-{itemName} {itemFlavor} {itemComplement}- {itemPrice},00{" "}
+    <article>
+      <div>
+        {itemQtd}-{itemName} {itemFlavor} {itemComplement}- R$ {itemPrice},00{" "}
         <p>
           {" "}
           <button onClick={onClickAdd}>+</button>
           <button onClick={onClickRemove}>-</button>
           <button onClick={onClickDelete}>ex</button>
         </p>
-      </p>
+      </div>
     </article>
   );
 };

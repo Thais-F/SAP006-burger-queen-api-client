@@ -46,7 +46,7 @@ function ReadyOrders() {
           itens.status.includes("ready")
         );
         const pedidosEntregar = pedidosFiltrados.sort(
-          (itemA, itemB) => itemB.id - itemA.id
+          (itemA, itemB) => itemA.id - itemB.id
         );
         setOrders(pedidosEntregar);
         console.log(pedidosEntregar);
