@@ -121,7 +121,8 @@ function Kitchen() {
                 <OrdersKitchen
                   status={item.status
                     .replace("pending", "Status: Pendente")
-                    .replace("preparing", "Status: Preparando...")}
+                    .replace("preparing", "Status: Preparando...")
+                  }
                   createdAt={`${new Date(item.createdAt).toLocaleDateString(
                     "pt-br",
                     {

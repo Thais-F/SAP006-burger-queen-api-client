@@ -3,9 +3,7 @@ import Login from "./pages/Login/index.js";
 import signUp from "./pages/signUp/index.js";
 import Menu from "./pages/Salao/index.js";
 import Kitchen from "./pages/Kitchen/index.js"; 
-// import ReadyOrders from "./components/orders/ordersReady.js"
 import { PedidosProntos } from "./pages/Salao/readyOrders.js";
-import OrderFinish from "./pages/Kitchen/ordersFinish.js";
 // import PrivateRoute from "./services/PrivateRoute";
 // import PublicRoute from './services/PublicRoute.js'
 
