@@ -1,36 +1,14 @@
 import React, { useEffect, useState } from "react";
 import OrdersKitchen from "../../components/orders/ordersKitchen";
 import OrdersClient from "../../components/orders/ordersClient";
-import Button from "../Button/button";
 import { Link } from "react-router-dom";
 import "../../pages/Kitchen/style.css";
-import magicWand from "../../img/varinha.png";
 import "./style.css";
+import Button from "../../components/Button/button";
 
-function ReadyOrders() {
+function OrderFinish() {
   const [orders, setOrders] = useState([]);
   const token = localStorage.getItem("usersToken");
-
-  const handleEntregar = (pedido, e) => {
-    e.preventDefault();
-    const url = "https://lab-api-bq.herokuapp.com/orders/";
-    const id = pedido.id;
-    const status = { status: "finished" };
-
-    fetch(url + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
-      body: JSON.stringify(status),
-    }).then((response) => {
-      response.json().then(() => {
-        alert("Refeição servida com sucesso!")
-        listaPedidos();
-      });
-    });
-  };
 
   const listaPedidos = () => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
@@ -43,11 +21,10 @@ function ReadyOrders() {
       .then((response) => response.json())
       .then((pedidos) => {
         const pedidosFiltrados = pedidos.filter((itens) =>
-          itens.status.includes("ready")
+          itens.status.includes("finished")
         );
-        const pedidosEntregar = pedidosFiltrados.sort((itemA, itemB) => itemB.id - itemA.id);
-        setOrders(pedidosEntregar);
-        console.log(pedidosEntregar);
+        const pedidosConcluidos = pedidosFiltrados.sort((itemA, itemB) => itemB.id - itemA.id);
+        setOrders(pedidosConcluidos);
       });
   };
 
@@ -59,13 +36,12 @@ function ReadyOrders() {
     <form className="container-kitchen">
       <header className="header">
         <div className="head">
-          <img src={magicWand} className="img-magicWand" alt="magicWand" />
           <div className="backMenu-logout"> 
 
-          <Link to="/menu">
-            <Button btnClass="back-menu" btnText="Voltar para Atendimento" />
+          <Link to="/kitchen">
+            <Button btnClass="back-menu" btnText="Voltar para cozinha" />
           </Link>
-          <h5 className="pedidos-prontos">Pedidos Prontos</h5>
+          <h5 className="pedidos-prontos">Pedidos Preparados</h5>
         </div>
         </div>
       </header>
@@ -80,7 +56,7 @@ function ReadyOrders() {
             <section className="container-pending" key={pedido.id}>
               <OrdersKitchen
                 status={
-                  pedido.status === "ready" ? (
+                  pedido.status === "finished" ? (
                     <p>Tempo de preparo: {minutes} min</p>
                   ) : (
                     ""
@@ -110,15 +86,6 @@ function ReadyOrders() {
                     qtd={itens.qtd}
                   />
                 ))}
-
-                <div>
-                  <Button
-                    content="Servir"
-                    btnClass="btn-servir"
-                    btnText="Servir"
-                    btnOnClick={(e) => handleEntregar(pedido, e)}
-                  />
-                </div>
               </OrdersKitchen>
             </section>
           );
@@ -128,4 +95,4 @@ function ReadyOrders() {
   );
 }
 
-export default ReadyOrders;
+export default OrderFinish;

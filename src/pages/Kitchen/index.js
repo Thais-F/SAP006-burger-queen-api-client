@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import OrdersKitchen from "../../components/orders/ordersKitchen";
 import OrdersClient from "../../components/orders/ordersClient";
 import Button from "../../components/Button/button";
+import { Link } from "react-router-dom";
 import "./style.css";
+import MagicBurguer from "../../img/MagicBurguer.png";
 
 function Kitchen() {
   const [orders, setOrders] = useState([]);
@@ -13,7 +15,6 @@ function Kitchen() {
     e.preventDefault();
     const status = { status: "preparing" };
     fetch("https://lab-api-bq.herokuapp.com/orders/" + item.id, {
-    // fetch(url + item.id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +28,8 @@ function Kitchen() {
     });
   };
 
-  const handleFinish = (pedido) => {
+  const handleFinish = (pedido, e) => {
+    e.preventDefault();
     const url = "https://lab-api-bq.herokuapp.com/orders/";
     const id = pedido.id;
     const status = { status: "ready" };
@@ -41,26 +43,29 @@ function Kitchen() {
       body: JSON.stringify(status),
     }).then((response) => {
       response.json().then(() => {
+        alert("Pedido enviado para servir!")
         listaPedidos();
       });
     });
   };
 
   const listaPedidos = () => {
-    fetch('https://lab-api-bq.herokuapp.com/orders', {
-      method: 'GET',
+    fetch("https://lab-api-bq.herokuapp.com/orders", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `${token}`,
       },
     })
       .then((response) => response.json())
       .then((pedidos) => {
-        const pedidosPendentes = pedidos.filter(
+        const pedidosFiltrados = pedidos.filter(
           (itens) =>
-            itens.status.includes('preparing') ||
-            itens.status.includes('pending')
+            itens.status.includes("preparing") ||
+            itens.status.includes("pending")
         );
+
+        const pedidosPendentes = pedidosFiltrados.sort((itemA, itemB) => itemB.id - itemA.id);
         setOrders(pedidosPendentes);
       });
   };
@@ -69,47 +74,37 @@ function Kitchen() {
     listaPedidos();
   }, [token]);
 
-
-  // useEffect(() => {
-  //   fetch("https://lab-api-bq.herokuapp.com/orders", {
-  //     headers: {
-  //       accept: "application/json",
-  //       Authorization: `${token}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       const allOrders = json.filter(
-  //         (item) =>
-  //           item.status === item.status.includes("preparing") ||
-  //           item.status.includes("pending")
-  //       );
-  //       setOrders(allOrders);
-  //       console.log(allOrders);
-  //     });
-  // }, [token]);
-
   return (
-    <form>
-      <h1>Essa página será a cozinha</h1>
+    <form className="container-kitchen">
+      <header className="header">
+        <div className="head">
+          <img src={MagicBurguer} className="img-logo" alt="MagicBurguer" />
+          <h5 className="pedidos">Cozinha</h5>
 
-      <h5>Pedidos</h5>
-      <section className="container-kitchen">
+          <Link to="/login">
+            <Button btnClass="logout" btnText="Sair " />
+          </Link>
+        </div>
+      </header>
+
+      <section>
         {orders.map((item) => (
           <OrdersKitchen
             status={item.status
-              .replace("pending", "Pendente")
-              .replace("preparing", "Preparando...")}
-            createdAt={item.createdAt}
+              .replace("pending", "Status: Pendente")
+              .replace("preparing", "Status: Preparando...")}
+            createdAt={`${new Date(item.createdAt).toLocaleDateString("pt-br", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "2-digit",
+            })}, ${new Date(item.createdAt).toLocaleTimeString("pt-br", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}h`}
             key={item.id}
             table={item.table}
             client_name={item.client_name}
           >
-            {/* <h5 style={{color: '#cf5e18'}} >Status: {item.status 
-                  .replace('pending', 'Pendente')
-                  .replace('preparing', 'Preparando...')}
-              </h5> */}
-
             {item.Products.map((product) => (
               <OrdersClient
                 key={product.id}
@@ -120,17 +115,17 @@ function Kitchen() {
               />
             ))}
 
-            <div style={{ paddingLeft: "5px" }}>
+            <div className="preparar-finalizar">
               <Button
-                                btnClass="btn-preparar"
+                btnClass="btn-preparar"
                 btnText="Preparar"
                 btnOnClick={(e) => handlePrepare(item, e)}
               />
 
               <Button
-                              btnClass="btn-finalizar"
+                btnClass="btn-finalizar"
                 btnText="Finalizar"
-                btnOnClick={() => handleFinish(item)}
+                btnOnClick={(e) => handleFinish(item, e)}
               />
             </div>
           </OrdersKitchen>

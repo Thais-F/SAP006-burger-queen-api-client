@@ -2,6 +2,7 @@ import Input from "../../components/inputs/index.js";
 import Button from "../../components/Button/button.js";
 import "../../components/Button/style.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import InputSelect from "../../components/inputs/InputSelect.js";
 import { Products } from "../../components/Product/index.js";
 import "./style.css";
@@ -9,6 +10,7 @@ import CartItems from "../../components/cartItems/cartitems.js";
 import { Burger } from "../../components/Burger/burger";
 import burger from "../../img/burger.png";
 // import { Cardapio } from "../../components/Burger/menu.js";
+import caldeirao from "../../img/caldeirao.png";
 
 const Menu = () => {
   const [menu, setMenu] = useState(true);
@@ -93,22 +95,6 @@ const Menu = () => {
       });
   }, [token]);
 
-  //   function toOrder(e) {
-  //     e.preventDefault()
-  //     setOrder({
-  //         "client": "string",
-  //         "table": "2",
-  //         "products": [
-  //           {
-  //             "id": 31,
-  //             "qtd": 2,
-  //             "flavor": null,
-  //             "complement": null,
-  //           }
-  //         ]
-  //       })
-  // }
-
   function teste(e) {
     e.preventDefault();
     console.log(order);
@@ -116,7 +102,27 @@ const Menu = () => {
 
   return (
     <main className="menu">
-      <h1>Menu e Atendimento</h1>
+
+    <div className="inicio"> 
+   <img src={caldeirao} className="img-caldeirao" alt="caldeirao" />
+      <div className="ready-logout"> 
+   
+      <Link to="/orders">
+        <Button
+          btnClass="pedidos-prontos"
+          btnText="Pedidos prontos"
+        />
+      </Link>
+
+      <Link to="/login">
+        <Button
+          btnClass="logout"
+          btnText="Sair "
+        />
+      </Link>
+      </div>
+      </div>
+
       <nav className="btn-mesa">
         <div className="btn-menu">
           <Button
