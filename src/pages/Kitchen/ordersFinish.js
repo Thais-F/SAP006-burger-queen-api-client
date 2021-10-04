@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import OrdersKitchen from "../../components/orders/ordersKitchen";
 import OrdersClient from "../../components/orders/ordersClient";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../../pages/Kitchen/style.css";
 import "./style.css";
-import Button from "../../components/Button/button";
+// import Button from "../../components/Button/button";
 
 function OrderFinish() {
   const [orders, setOrders] = useState([]);
@@ -34,18 +34,6 @@ function OrderFinish() {
 
   return (
     <form className="container-kitchen">
-      <header className="header">
-        <div className="head">
-          <div className="backMenu-logout"> 
-
-          <Link to="/kitchen">
-            <Button btnClass="back-menu" btnText="Voltar para cozinha" />
-          </Link>
-          <h5 className="pedidos-prontos">Pedidos Preparados</h5>
-        </div>
-        </div>
-      </header>
-
       <section>
         {orders.map((pedido) => {
           const dataUpdated = new Date(pedido.updatedAt);

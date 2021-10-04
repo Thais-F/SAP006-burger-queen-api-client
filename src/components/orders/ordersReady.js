@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import OrdersKitchen from "../../components/orders/ordersKitchen";
-import OrdersClient from "../../components/orders/ordersClient";
+import OrdersKitchen from "./ordersKitchen";
+import OrdersClient from "./ordersClient";
 import Button from "../Button/button";
 import { Link } from "react-router-dom";
 import "../../pages/Kitchen/style.css";
@@ -26,7 +26,7 @@ function ReadyOrders() {
       body: JSON.stringify(status),
     }).then((response) => {
       response.json().then(() => {
-        alert("Refeição servida com sucesso!")
+        alert("Refeição servida com sucesso!");
         listaPedidos();
       });
     });
@@ -45,7 +45,9 @@ function ReadyOrders() {
         const pedidosFiltrados = pedidos.filter((itens) =>
           itens.status.includes("ready")
         );
-        const pedidosEntregar = pedidosFiltrados.sort((itemA, itemB) => itemB.id - itemA.id);
+        const pedidosEntregar = pedidosFiltrados.sort(
+          (itemA, itemB) => itemB.id - itemA.id
+        );
         setOrders(pedidosEntregar);
         console.log(pedidosEntregar);
       });
@@ -60,13 +62,13 @@ function ReadyOrders() {
       <header className="header">
         <div className="head">
           <img src={magicWand} className="img-magicWand" alt="magicWand" />
-          <div className="backMenu-logout"> 
+          <div className="backMenu-logout">
+            <Link to="/menu">
+              <Button btnClass="back-menu" btnText="Voltar para Atendimento" />
+            </Link>
 
-          <Link to="/menu">
-            <Button btnClass="back-menu" btnText="Voltar para Atendimento" />
-          </Link>
-          <h5 className="pedidos-prontos">Pedidos Prontos</h5>
-        </div>
+            <h5 className="pedidos">Pedidos Prontos</h5>
+          </div>
         </div>
       </header>
 

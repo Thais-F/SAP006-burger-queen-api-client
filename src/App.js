@@ -20,7 +20,6 @@ function App() {
         <Route path="/menu" component={Menu} />
         <Route path="/kitchen" component={Kitchen} />
         <Route path="/orders" component={PedidosProntos} />
-        <Route path="/ordersKitchen" component={OrderFinish} />
         
       </Switch>
       </BrowserRouter>
