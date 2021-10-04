@@ -30,7 +30,7 @@ function OrderFinish() {
 
   useEffect(() => {
     listaPedidos();
-  }, [token]);
+  },);
 
   return (
     <form className="container-kitchen">

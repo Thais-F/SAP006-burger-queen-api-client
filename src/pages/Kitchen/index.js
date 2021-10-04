@@ -76,7 +76,8 @@ function Kitchen() {
 
   useEffect(() => {
     listaPedidos();
-  }, [token]);
+  }, 
+  );
 
   return (
     <form className="container-kitchen">
