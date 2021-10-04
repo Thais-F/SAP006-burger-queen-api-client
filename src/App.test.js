@@ -65,7 +65,7 @@ describe('testing routes', () => {
     );
 
     expect(screen.getByText("registerPage")).toBeInTheDocument();
-    expect(Login).toHaveBeenCalledTimes(1);
+    expect(SignUp).toHaveBeenCalledTimes(1);
   });
 
   it('menu page should be render when pathname is `/menu`', async () => {
@@ -81,7 +81,7 @@ describe('testing routes', () => {
     );
 
     expect(screen.getByText("menuPage")).toBeInTheDocument();
-    expect(Login).toHaveBeenCalledTimes(1);
+    expect(Menu).toHaveBeenCalledTimes(1);
   });
 
   it('kitchen page should be render when pathname is `/kitchen`', async () => {
@@ -97,7 +97,7 @@ describe('testing routes', () => {
     );
 
     expect(screen.getByText("kitchenPage")).toBeInTheDocument();
-    expect(Login).toHaveBeenCalledTimes(1);
+    expect(Kitchen).toHaveBeenCalledTimes(1);
   });
 
 })

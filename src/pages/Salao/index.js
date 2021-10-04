@@ -17,9 +17,9 @@ const Menu = () => {
   const [burgers, setBurgers] = useState([]);
   const [side, setSide] = useState([]);
   const [drinks, setDrinks] = useState([]);
-  const [clientName, setClienName] = useState({clientName: ""})
-  const [clientTable, setClienTable] = useState({clientTable: ""})
-  
+  const [clientName, setClientName] = useState({ clientName: "" })
+  const [clientTable, setClienTable] = useState({ clientTable: "" })
+
 
   let totalCost = 0;
 
@@ -52,12 +52,12 @@ const Menu = () => {
     }
   }
 
-  function handleInputSelectOnChange(e){
-    setClienTable({clientTable: e.target.value})
+  function handleInputSelectOnChange(e) {
+    setClienTable({ clientTable: e.target.value })
   }
 
-  function handleInputOnChange(e){
-    setClienName({clientName: e.target.value})
+  function handleInputOnChange(e) {
+    setClientName({ clientName: e.target.value })
   }
 
   function addOneItem(e, item) {
@@ -110,29 +110,32 @@ const Menu = () => {
     e.preventDefault()
 
     const orderProducts = order.map((item) => {
-       return {
-          "id": item.itemNameKey,
-          "qtd": item.itemQtd,
-          "flavor": item.itemFlavor,
-          "complement": item.itemComplement,
-        }
+      return {
+        "id": item.itemNameKey,
+        "qtd": item.itemQtd,
+        "flavor": item.itemFlavor,
+        "complement": item.itemComplement,
+      }
     })
 
     const APIBody = ({
-        "client": clientName.clientName,
-        "table": clientTable.clientTable,
-        "products": orderProducts
-      })
+      "client": clientName.clientName,
+      "table": clientTable.clientTable,
+      "products": orderProducts
+    })
 
-      console.log(APIBody)
-      sendOrderToAPI(APIBody)
+    console.log(APIBody)
+    sendOrderToAPI(APIBody)
       .then((response) => response.json())
       .then((Json) => {
         console.log(Json)
-        if (Json.message){
+        if (Json.message) {
           alert('Ocorreu um erro, tente novamente!')
         } else {
           alert('Pedido realizado com sucesso!')
+          setOrder([])
+          setClientName({ clientName: "" })
+          setClienTable({ clientTable: "" })
         }
       })
   }
@@ -163,15 +166,15 @@ const Menu = () => {
           />
         </div>
         <div className="cliente-mesa">
-          <Input className="input client" 
-          placeholder="Cliente"
-          onChange={(e) => handleInputOnChange(e)}
-          // value={clientName.clientName}
+          <Input className="input client"
+            placeholder="Cliente"
+            onChange={(e) => handleInputOnChange(e)}
+            value={clientName.clientName}
           >
           </Input>
-          <InputSelect 
-          // value={clientTable}
-           onChange={(e) => handleInputSelectOnChange(e)}
+          <InputSelect
+            value={clientTable.clientTable}
+            onChange={(e) => handleInputSelectOnChange(e)}
           />
         </div>
       </nav>
