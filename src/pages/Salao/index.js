@@ -145,24 +145,25 @@ const Menu = () => {
   return (
     <main className="menu">
 
-    <div className="inicio"> 
-   <img src={caldeirao} className="img-caldeirao" alt="caldeirao" />
-      <div className="ready-logout"> 
-   
-      <Link to="/orders">
-        <Button
-          btnClass="pedidos-prontos"
-          btnText="Pedidos prontos"
-        />
-      </Link>
+      <div className="inicio">
+        <img src={caldeirao} className="img-caldeirao" alt="caldeirao" />
+        <div className="ready-logout">
 
-      <Link to="/login">
-        <Button
-          btnClass="logout"
-          btnText="Sair "
-        />
-      </Link>
-      </div>
+          <Link to="/orders">
+            <Button
+              btnClass="pedidos-prontos"
+              btnText="Pedidos prontos"
+            />
+          </Link>
+
+          <Link to="/login">
+            <Button
+              btnOnClick={() => localStorage.clear()}
+              btnClass="logout"
+              btnText="Sair "
+            />
+          </Link>
+        </div>
       </div>
 
       <nav className="btn-mesa">

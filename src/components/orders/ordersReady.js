@@ -49,7 +49,6 @@ function ReadyOrders() {
           (itemA, itemB) => itemA.id - itemB.id
         );
         setOrders(pedidosEntregar);
-        console.log(pedidosEntregar);
       });
   };
 
@@ -113,7 +112,7 @@ function ReadyOrders() {
                   />
                 ))}
 
-                <div>
+                <div className="div-btn-servir">
                   <Button
                     content="Servir"
                     btnClass="btn-servir"

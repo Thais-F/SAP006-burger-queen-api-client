@@ -16,8 +16,7 @@ function OrdersKitchen({
 
           <h3>
             {" "}
-            {status}
-            {/* {status === "Status: Preparando..." && <span> {status} </span>} <span> {status} </span>             */}
+            {status === "Status: Pendente" ? <span className="status-pending"> {status} </span > : <span className="status-preparing"> {status} </span> }             
           </h3>
         </div>
 
