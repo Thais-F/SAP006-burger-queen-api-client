@@ -68,7 +68,7 @@ function Kitchen() {
         );
 
         const pedidosPendentes = pedidosFiltrados.sort(
-          (itemA, itemB) => itemB.id - itemA.id
+          (itemA, itemB) => itemA.id - itemB.id
         );
         setOrders(pedidosPendentes);
       });
@@ -76,7 +76,7 @@ function Kitchen() {
 
   useEffect(() => {
     listaPedidos();
-  }, 
+  },
   );
 
   return (
@@ -87,7 +87,7 @@ function Kitchen() {
           <h5 className="pedidos">Cozinha</h5>
 
           <Link to="/login">
-            <Button btnClass="logout" btnText="Sair " />
+            <Button btnOnClick={() => localStorage.clear()} btnClass="logout" btnText="Sair " />
           </Link>
         </div>
       </header>

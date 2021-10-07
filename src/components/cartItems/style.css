@@ -1,0 +1,20 @@
+.btn-add-item,
+.btn-removeone-item,
+.btn-delete-item {
+    background-color: transparent;
+    border: none;
+}
+
+.p-btn-items {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.fa-plus-circle:before {
+    color: green;
+}
+
+.fa-minus:before {
+   color: red; 
+}

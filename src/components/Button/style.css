@@ -1,7 +1,10 @@
 .goBtn,
 .registerBtn,
 .createAccount,
-.order {
+.order,
+.btn-preparar,
+.btn-finalizar,
+.btn-servir {
   padding: 6px;
   color: var(--white);
   background-color: var(--purple);
@@ -21,6 +24,8 @@
 .registerBtn {
   width: 120%;
   margin-top: 10%;
+  position: relative;
+  right: 10%
 }
 
 .createAccount {
@@ -30,4 +35,23 @@
 .order {
   width: 200px;
   margin-top: 20px;
+}
+
+.status-pending {
+  color: var(--red);
+}
+
+.btn-preparar {
+  margin: 10px;
+  width: 100px;
+}
+
+.btn-finalizar {
+  background-color: green;
+  margin: 10px;
+  width: 100px;
+}
+
+.btn-servir {
+  width: 100px;
 }
