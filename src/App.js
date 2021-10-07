@@ -4,7 +4,7 @@ import signUp from "./pages/signUp/index.js";
 import Menu from "./pages/Salao/index.js";
 import Kitchen from "./pages/Kitchen/index.js"; 
 import { PedidosProntos } from "./pages/Salao/readyOrders.js";
-// import PrivateRoute from "./services/PrivateRoute";
+import PrivateRoute from "./services/PrivateRoute";
 // import PublicRoute from './services/PublicRoute.js'
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
         <Route path="/" exact component={Login} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={signUp} />
-        <Route path="/menu" component={Menu} />
-        <Route path="/kitchen" component={Kitchen} />
+        <PrivateRoute path="/menu" component={Menu} />
+        <PrivateRoute path="/kitchen" component={Kitchen} />
         <Route path="/orders" component={PedidosProntos} />
         
       </Switch>

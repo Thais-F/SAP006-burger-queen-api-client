@@ -44,7 +44,8 @@ function Login() {
             const id = json.id;
             const role = json.role;
             localStorage.setItem("usersToken", token);
-
+            // localStorage.setItem("usersRole", role)
+            
             if (token !== null && id !== null && role === "atendente") {
               navigateToMenu();
             } else if (token !== null && id !== null && role === "cozinheiro") {
