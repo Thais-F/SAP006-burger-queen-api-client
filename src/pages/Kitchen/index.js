@@ -76,8 +76,7 @@ function Kitchen() {
 
   useEffect(() => {
     listaPedidos();
-  },
-  );
+  });
 
   return (
     <form className="container-kitchen">
@@ -87,7 +86,11 @@ function Kitchen() {
           <h5 className="pedidos">Cozinha</h5>
 
           <Link to="/login">
-            <Button btnOnClick={() => localStorage.clear()} btnClass="logout" btnText="Sair " />
+            <Button
+              btnOnClick={() => localStorage.clear()}
+              btnClass="logout"
+              btnText="Sair "
+            />
           </Link>
         </div>
       </header>
@@ -122,8 +125,7 @@ function Kitchen() {
                 <OrdersKitchen
                   status={item.status
                     .replace("pending", "Status: Pendente")
-                    .replace("preparing", "Status: Preparando...")
-                  }
+                    .replace("preparing", "Status: Preparando...")}
                   createdAt={`${new Date(item.createdAt).toLocaleDateString(
                     "pt-br",
                     {
