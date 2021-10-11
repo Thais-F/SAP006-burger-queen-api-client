@@ -37,29 +37,27 @@ const SignUp = () => {
       const validation = validate(values);
       console.log(validation);
 
-      setErrors(validation)
+      setErrors(validation);
 
       if (validation.valid) {
-
-        console.log(errors.valid)
-        console.log(values)
-        console.log('Entrou?')
+        console.log(errors.valid);
+        console.log(values);
         signUpWithEmailAndPassword(values)
           .then((response) => {
             if (response.message) {
               console.log(response.message);
               setErrors({
                 message: response.message,
-              })
+              });
             } else if (response.token) {
-              console.log(response)
-              alert("Usuário cadastrado com sucesso!")
-              navigateToLogin()
+              console.log(response);
+              alert("Usuário cadastrado com sucesso!");
+              navigateToLogin();
             }
           })
-          // .catch((error) => {
-          //   throw new Error(error)
-          // })
+          .catch((error) => {
+            throw new Error(error);
+          });
       }
     };
 
@@ -106,7 +104,10 @@ const SignUp = () => {
               value={values.email}
               onChange={handleChange}
             />
-            <p className="errorMessage"> {errors.email && errors.email} {errors.message && errors.message}</p>
+            <p className="errorMessage">
+              {" "}
+              {errors.email && errors.email} {errors.message && errors.message}
+            </p>
           </fieldset>
 
           <fieldset className="margin-input">
