@@ -412,7 +412,6 @@ const Menu = () => {
                   return (
                     <>
                       <CartItems
-                        // itemNameKey={item.itemNameKey}
                         itemName={item.itemName}
                         itemPrice={item.itemPrice}
                         itemQtd={item.itemQtd}
