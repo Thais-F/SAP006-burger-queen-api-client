@@ -32,34 +32,34 @@ describe("Clear mocks - SignUp", () => {
     });
 
 
-    // test("Should call signUp function and return user's token", async () => {
-    //     const response = { token: "token" }
-    //     services.signUpWithEmailAndPassword.mockResolvedValueOnce(response);
+    test("Should call signUp function and return user's token", async () => {
+        const response = { token: "token" }
+        services.signUpWithEmailAndPassword.mockResolvedValueOnce(response);
 
-    //     render(<SignUp />)
+        render(<SignUp />)
 
-    //     const nameInput = screen.queryByPlaceholderText("Nome")
-    //     const emailInput = screen.queryByPlaceholderText("Email")
-    //     const passwordInput = screen.queryByPlaceholderText("Senha")
-    //     const atendenteOption = screen.queryAllByLabelText("Atendente")
-    //     const signUpButton = screen.queryByText("Cadastrar")
+        const nameInput = screen.queryByPlaceholderText("Nome")
+        const emailInput = screen.queryByPlaceholderText("Email")
+        const passwordInput = screen.queryByPlaceholderText("Senha")
+        const atendenteOption = screen.queryAllByLabelText("Atendente")
+        const signUpButton = screen.queryByText("Cadastrar")
 
-    //     const email = "thaisFJ@gmail.com"
-    //     const password = "123456"
+        const email = "thaisFJ@gmail.com"
+        const password = "123456"
 
-    //     userEvent.type(nameInput, "Thais")
-    //     userEvent.type(emailInput, email)
-    //     userEvent.type(passwordInput, password)
-    //     userEvent.type(atendenteOption[0])
-    //     userEvent.click(signUpButton)
+        userEvent.type(nameInput, "Thais")
+        userEvent.type(emailInput, email)
+        userEvent.type(passwordInput, password)
+        userEvent.type(atendenteOption[0])
+        userEvent.click(signUpButton)
 
-    //     expect(nameInput.value).toBe("Thais");
-    //     expect(emailInput.value).toBe(email);
-    //     expect(passwordInput.value).toBe(password);
-    //     expect(atendenteOption[0].value).toBe("atendente");
-    //     expect(services.signUpWithEmailAndPassword).toHaveBeenCalledTimes(1);
-    //     expect(services.signUpWithEmailAndPassword).toHaveBeenCalledWith({ "email": email, "name": "Thais", "password": password, "role": "atendente" });
-    // })
+        expect(nameInput.value).toBe("Thais");
+        expect(emailInput.value).toBe(email);
+        expect(passwordInput.value).toBe(password);
+        expect(atendenteOption[0].value).toBe("atendente");
+        expect(services.signUpWithEmailAndPassword).toHaveBeenCalledTimes(1);
+        expect(services.signUpWithEmailAndPassword).toHaveBeenCalledWith({ "email": email, "name": "Thais", "password": password, "role": "atendente" });
+    })
 
     test("Should not call signUp function and return printed errors on screen", async () => {
         const response = { code: "number", message: "errorMessage" }

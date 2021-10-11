@@ -57,9 +57,9 @@ const SignUp = () => {
               navigateToLogin()
             }
           })
-          .catch((error) => {
-            throw new Error(error)
-          })
+          // .catch((error) => {
+          //   throw new Error(error)
+          // })
       }
     };
 
