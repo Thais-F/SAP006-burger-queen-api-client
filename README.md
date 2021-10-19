@@ -102,10 +102,9 @@ _colocar print/gif aplicação aqui_
 - A tela inicial da aplicação traz a **Página de Login** que apresenta ao usuário as opções de fazer o login com email e senha, já cadastrados, para entrar na plataforma do MagicBurger ou prosseguir para a página de cadastro;
 -	Na Página de **Cadastro**, o funcionário pode cadastrar-se inserindo seus dados com nome, e-mail, senha e cargo;
 -	Ao realizar qualquer uma dessas formas de acesso, o usuário será encaminhado para o seu respectivo ambiente;
-
-1.	**Salão:** para os garçons/garçonetes, onde ocorrerá a anotação e encaminhamento dos pedidos para a cozinha;
-2.	**Cozinha:** para os cozinheiros que receberão a demanda dos pedidos realizados.
-3.	**Pedidos Prontos:** para os garçons/garçonetes, onde ocorrerá a exibição de pedidos finalizados para serem entregues;
+    1.**Salão:** para os garçons/garçonetes, onde ocorrerá a anotação e encaminhamento dos pedidos para a cozinha;
+    2.	**Cozinha:** para os cozinheiros que receberão a demanda dos pedidos realizados.
+    3.	**Pedidos Prontos:** para os garçons/garçonetes, onde ocorrerá a exibição de pedidos finalizados para serem entregues;
 
 
 ## 5. Histórias de Usuários
