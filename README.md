@@ -124,7 +124,7 @@ está pronto para ser entregue ao cliente._
 _Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
 rapidamente aos clientes._
 
----
+
 
 ## 5. Tecnologias Utilizadas
 
