@@ -15,12 +15,10 @@
 O projeto **BURGUER QUEEN** foi criado no bootcamp da [Laboratoria Brasil](https://www.laboratoria.la/br). 
 
 🍔 Desenvolvido por [Isis Noronha]( https://github.com/isisnoron) e [Thais Fernandes](https://github.com/Thais-F), utilizando React.
-Você pode acessar a aplicação utilizando um dos logins de teste abaixo, [aqui](https://magic-burger.netlify.app/)
+Você pode acessar a aplicação [aqui](https://magic-burger.netlify.app/), utilizando um dos logins de teste abaixo: 
 
 <div align='center'>
  
-  <h4>senhas de acesso:</h4>
-
 > |      |          Salão          |      Cozinha             |
 > |------|-------------------------|------------------------- |
 > | 📨  |  atendente@gmail.com   |   cozinheiro@gmail.com   |
