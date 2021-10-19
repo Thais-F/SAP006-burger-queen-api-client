@@ -100,9 +100,10 @@ _colocar print/gif aplicação aqui_
 
 ## 4. Histórias de Usuários
 
-[Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
+#### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
-#### Eu, como garçom/garçonete quero entrar no sistema de pedidos.
+_Eu, como garçom/garçonete quero entrar no sistema de pedidos._
+
 ---
 
 #### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
