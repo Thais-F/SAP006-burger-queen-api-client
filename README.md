@@ -4,7 +4,7 @@
 
 - [1. Sobre o projeto](#1-sobre-o-projeto)
 - [2. Resumo do projeto](#2-resumo-do-projeto)
-- [3. Protótipos](#3-protótipos)
+- [3. Aplicação](#3-aplicação)
 - [4. Histórias de Usuários](#4-histórias-de-usuários)
 - [5. Tecnologias Utilizadas](#6-tecnologias-utilizadas)
 
@@ -87,11 +87,15 @@ tela_, e como cada mudança no estado vai refletir na interface (por exemplo,
 toda vez que adicionamos um _produto_ para um _pedido_, a interface deve
 atualizar a lista de pedidos e o total).
 
-## 3. Protótipos
+## 3. Aplicação
 
----
+### Paleta de Cores
+![img](./src/img/paleta.png)
 
-### HTML
+### Interface
+_colocar print/gif aplicação aqui_
+
+
 
 
 ## 4. Histórias de Usuários
@@ -99,14 +103,6 @@ atualizar a lista de pedidos e o total).
 #### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
-
-##### Critérios de aceitação
-
-- Acessar uma tela de login.
-- Inserir email e senha.
-- Receber mensagens de erros compreensíveis, conforme o erro e as informações inseridas.
-- Entrar no sistema de pedidos caso as credenciais forem corretas.
-
 ---
 
 #### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
@@ -114,16 +110,6 @@ Eu, como garçom/garçonete quero entrar no sistema de pedidos.
 Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
 depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
 cozinha para serem preparados em ordem.
-
-##### Critérios de aceitação
-
-- Anotar o nome do cliente.
-- Adicionar produtos aos pedidos.
-- Excluir produtos.
-- Ver resumo e o total da compra.
-- Enviar o pedido para a cozinha (guardar em algum banco de dados).
-- Funcionar bem em um _tablet_.
-
 ---
 
 #### [História de usuário 3] Chefe de cozinha deve ver os pedidos
@@ -131,25 +117,12 @@ cozinha para serem preparados em ordem.
 Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
 marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido
 está pronto para ser entregue ao cliente.
-
-##### Critérios de aceitação
-
-- Ver os pedidos ordenados à medida em que são feitos.
-- Marcar os pedidos que foram preparados e estão prontos para serem servidos.
-- Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado
-  como concluído.
-
 ---
 
 #### [Historia de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
 
 Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
 rapidamente aos clientes.
-
-##### Critérios de aceitação
-
-- Ver a lista de pedidos prontos para servir.
-- Marcar os pedidos que foram entregues.
 
 ---
 
