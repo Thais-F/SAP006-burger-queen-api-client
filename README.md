@@ -90,7 +90,7 @@ atualizar a lista de pedidos e o total).
 ## 3. Aplicação
 
 ### Paleta de Cores
-![img](./src/img/paleta.png)
+![img](./src/img/paleta-bq.png)
 
 ### Interface
 _colocar print/gif aplicação aqui_
