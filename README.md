@@ -103,27 +103,26 @@ _colocar print/gif aplicação aqui_
 #### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
 _Eu, como garçom/garçonete quero entrar no sistema de pedidos._
-
 ---
 
 #### [História de usuário 2] Garçom/Garçonete deve ser capaz de anotar o pedido do cliente
 
-Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
+_Eu como garçom/garçonete quero poder anotar o pedido de um cliente para não
 depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
-cozinha para serem preparados em ordem.
+cozinha para serem preparados em ordem._
 ---
 
 #### [História de usuário 3] Chefe de cozinha deve ver os pedidos
 
-Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
+_Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder
 marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido
-está pronto para ser entregue ao cliente.
+está pronto para ser entregue ao cliente._
 ---
 
 #### [Historia de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
 
-Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
-rapidamente aos clientes.
+_Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los
+rapidamente aos clientes._
 
 ---
 
