@@ -91,7 +91,7 @@ atualizar a lista de pedidos e o total).
 
 ## 3. Protótipos
 
-Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projeto. Pense nisso para decidir sua estratégia de trabalho.
+---
 
 ### HTML
 
@@ -103,8 +103,6 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 Eu, como garçom/garçonete quero entrar no sistema de pedidos.
 
 ##### Critérios de aceitação
-
-O que deve acontecer para satisfazer as necessidades do usuário?
 
 - Acessar uma tela de login.
 - Inserir email e senha.
@@ -120,8 +118,6 @@ depender da minha memória, saber quanto cobrar e poder enviar os pedidos para a
 cozinha para serem preparados em ordem.
 
 ##### Critérios de aceitação
-
-O que deve acontecer para satisfazer as necessidades do usuário?
 
 - Anotar o nome do cliente.
 - Adicionar produtos aos pedidos.
