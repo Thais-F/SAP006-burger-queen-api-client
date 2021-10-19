@@ -5,8 +5,9 @@
 - [1. Sobre o projeto](#1-sobre-o-projeto)
 - [2. Resumo do projeto](#2-resumo-do-projeto)
 - [3. Aplicação](#3-aplicação)
-- [4. Histórias de Usuários](#4-histórias-de-usuários)
-- [5. Tecnologias Utilizadas](#6-tecnologias-utilizadas)
+- [4. Como Utilizar](#4-como-utilizar)
+- [5. Histórias de Usuários](#5-histórias-de-usuários)
+- [6. Tecnologias Utilizadas](#6-tecnologias-utilizadas)
 
 ---
 
@@ -96,9 +97,17 @@ atualizar a lista de pedidos e o total).
 _colocar print/gif aplicação aqui_
 
 
+## 4. Como utilizar
+
+•	A tela inicial da aplicação traz a **Página de Login** que apresenta ao usuário as opções de fazer o login com email e senha, já cadastrados, para entrar na plataforma do MagicBurger ou prosseguir para a página de cadastro;
+•	Na Página de **Cadastro**, o funcionário pode cadastrar-se inserindo seus dados com nome, e-mail, senha e cargo;
+•	Ao realizar qualquer uma dessas formas de acesso, o usuário será encaminhado para o seu respectivo ambiente;
+i.	**Salão:** para os garçons/garçonetes, onde ocorrerá a anotação e encaminhamento dos pedidos para a cozinha;
+ii.	**Cozinha:** para os cozinheiros que receberão a demanda dos pedidos realizados.
+iii.	**Pedidos Prontos:** para os garçons/garçonetes, onde ocorrerá a exibição de pedidos finalizados para serem entregues;
 
 
-## 4. Histórias de Usuários
+## 5. Histórias de Usuários
 
 #### [Historia de usuario 1] Garçom/Garçonete deve poder entrar no sistema, caso o admin já lhe tenha dado as credenciais
 
@@ -126,7 +135,7 @@ rapidamente aos clientes._
 
 
 
-## 5. Tecnologias Utilizadas
+## 6. Tecnologias Utilizadas
 
 <div style="display: inline_block"><br>
   <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
